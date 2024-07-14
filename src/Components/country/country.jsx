@@ -2,7 +2,7 @@
  import { useState } from 'react';
 
  const Country =( {country,handelvisitedcountries }  ) =>{
-    console.log(country)
+    // console.log(country)
 
    const {name,flags,population,area,maps,cca3}= country;
    const [visited , setVisited] = useState(false);
@@ -14,7 +14,11 @@
  setVisited(!visited);
 
    }
-   console.log(handelvisitedcountries)
+
+   const passwithParams = () =>
+
+   handelvisitedcountries(country)
+   
 
  return (
             <div className={`country ${visited ? 'visited':'non-visited'}` }>
@@ -25,7 +29,10 @@
              <p>Area : {area} </p>
              <p>Maps : {maps.googleMaps} </p>
              <p> <small>code:{cca3}</small> </p>
-             <button>Mark Visited</button>
+             <button onClick={ () =>
+
+   handelvisitedcountries(country)
+   }>Mark Visited</button>
              <br />
 
              <button onClick={handelVisited}>{ visited ? "visited" : " Going"}</button>

@@ -10,8 +10,13 @@ const Countries = () => {
   const handelvisitedcountries = country =>{
  console.log('add this to your visited country')
 
-    console.log(country);
-  }
+    // console.log(country);
+   // console.log(country);
+const newvisitedCountries = [...visitedcountries, country];
+setVisitedcountries(newvisitedCountries);
+
+
+}
 
   useEffect(() => {
     fetch('https://restcountries.com/v3.1/all')
@@ -26,7 +31,13 @@ const Countries = () => {
     <div >
       <h3>Countries : {countries.length}</h3>
 
-      <h3>Visited countries :</h3>
+      <h3>Visited countries :  {visitedcountries.length}</h3>{
+
+            visitedcountries.map(country =><li key={country.cca3}>{country.name.common} </li>
+
+            )
+
+      }
       <div className="country-container"  >
         {
 
