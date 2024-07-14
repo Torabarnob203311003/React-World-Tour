@@ -1,25 +1,27 @@
-
 import { useState, useEffect } from 'react';
+import Country from '../country/country';
 
+const Countries = () => {
+  const [countries, setCountries] = useState([]);
 
- const Countries = () => {
+  useEffect(() => {
+    fetch('https://restcountries.com/v3.1/all')
+      .then(res => res.json()) // Call the json() method correctly
+      .then(data => {
+        setCountries(data); // Update the countries state
+        // console.log(data); // Log the data to the console
+      });
+  }, []);
 
-     const [countries, setCountries] = useState([]);
+  return (
+    <div>
+      <h3>Countries : {countries.length}</h3>{
 
-     useEffect( ()=>{
+            countries.map(country => <Country key={country.cca3} country={country}> </Country>)
 
-             fetch('https://restcountries.com/v3.1/all')
-             .then(res=> res.json)
-             .then( data => console.log(data))
+      }
+    </div>
+  );
+};
 
-
-     },[])
-
-    return (
-        <div>
-            <h3>Countries</h3>
-        </div>
-    );
- };
-  export default Countries;  
- 
+export default Countries;
