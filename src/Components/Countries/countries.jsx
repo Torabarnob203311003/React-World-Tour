@@ -5,6 +5,14 @@ import'./countries.css'
 const Countries = () => {
   const [countries, setCountries] = useState([]);
 
+  const [visitedcountries, setVisitedcountries] = useState([]);
+
+  const handelvisitedcountries = country =>{
+ console.log('add this to your visited country')
+
+    console.log(country);
+  }
+
   useEffect(() => {
     fetch('https://restcountries.com/v3.1/all')
       .then(res => res.json()) // Call the json() method correctly
@@ -17,10 +25,12 @@ const Countries = () => {
   return (
     <div >
       <h3>Countries : {countries.length}</h3>
-      <div className='country-container'  >
+
+      <h3>Visited countries :</h3>
+      <div className="country-container"  >
         {
 
-            countries.map(country => <Country key={country.cca3} country={country}> </Country>)
+            countries.map(country => <Country key={country.cca3} country={country} handelvisitedcountries={handelvisitedcountries}> </Country>)
 
       }
       </div>

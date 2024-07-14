@@ -5,3 +5,9 @@
  gap: 10px;
     
 }
+.visited {
+
+        background-color:rgb(18, 12, 206);
+        color: #fff;
+        
+}
