@@ -1,7 +1,7 @@
  import './country.css'
  import { useState } from 'react';
 
- const Country =( {country,handelvisitedcountries }  ) =>{
+ const Country =( {country,handelvisitedcountries ,handelvisitedflags}  ) =>{
     // console.log(country)
 
    const {name,flags,population,area,maps,cca3}= country;
@@ -33,6 +33,8 @@
 
    handelvisitedcountries(country)
    }>Mark Visited</button>
+   <br />
+   <button onClick={()=> handelvisitedflags(country.flags.png)}> Add Flag</button>
              <br />
 
              <button onClick={handelVisited}>{ visited ? "visited" : " Going"}</button>
